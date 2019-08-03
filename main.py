@@ -23,8 +23,6 @@ import psutil
 from discord.ext.commands.cooldowns import BucketType
 import humanize
 
-BOT_TOKEN = ("NDY0ODI2NzM3MTg5MDYwNjA4.XTcjmQ.KFHHHz1AfFa9VQ3aiNh1lGw-bjk")
-
 # Prefixes #
 
 bot = commands.Bot(command_prefix="Z-", status=discord.Status.idle, activity=discord.Game(name="Loading..."), case_insensitive=True)
