@@ -1,0 +1,7 @@
+discord
+psutil
+texttable
+wolframalpha
+cleverwrap
+flask
+humanize
