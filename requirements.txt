@@ -5,3 +5,4 @@ wolframalpha
 cleverwrap
 flask
 humanize
+webserver
