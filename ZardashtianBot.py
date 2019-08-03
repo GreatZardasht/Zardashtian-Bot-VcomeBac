@@ -18,7 +18,6 @@ import requests
 from discord.utils import find
 from cleverwrap import CleverWrap
 import aiohttp
-from webserver import keep_alive
 import psutil
 from discord.ext.commands.cooldowns import BucketType
 import humanize
