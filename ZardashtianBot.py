@@ -22,7 +22,7 @@ import psutil
 from discord.ext.commands.cooldowns import BucketType
 import humanize
 
-BOT_TOKEN = ("NDY0ODI2NzM3MTg5MDYwNjA4.XU2wKQ.IB_qv1wLhfHZBCjL0sA2kKo8K24")
+BOT_TOKEN = ("NDY0ODI2NzM3MTg5MDYwNjA4.XU25fg.MQ38Iec25ncQIuH5xt8ecm5plnM")
 
 # Prefixes #
 
