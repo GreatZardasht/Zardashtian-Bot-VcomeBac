@@ -30,6 +30,8 @@ bot = commands.Bot(command_prefix="Z-", status=discord.Status.idle, activity=dis
 
 client = commands.Bot
 
+client = discord.Client()
+
 client = commands.Bot(command_prefix='Z-')
 
 # Variables #
@@ -245,4 +247,4 @@ async def list_servers():
 
 
 client.loop.create_task(list_servers())
-client.run(str(os.environ.get('BOT_TOKEN')))
+client.run(BOT_TOKEN)
