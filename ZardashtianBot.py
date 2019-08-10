@@ -28,7 +28,7 @@ BOT_TOKEN = ("NDY0ODI2NzM3MTg5MDYwNjA4.XU25fg.MQ38Iec25ncQIuH5xt8ecm5plnM")
 
 bot = commands.Bot(command_prefix="Z-", status=discord.Status.idle, activity=discord.Game(name="Loading..."), case_insensitive=True)
 
-changinggame = True
+client = commands.Bot
 
 client = commands.Bot(command_prefix='Z-')
 
