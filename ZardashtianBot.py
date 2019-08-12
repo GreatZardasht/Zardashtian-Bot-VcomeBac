@@ -198,10 +198,10 @@ async def ban(ctx, user: discord.User):
 async def kick(ctx, user: discord.User):
     """Kick a user"""
     try:
-       await client.kick(user)
-       await client.say(("{} was successfully kicked.").format(user))
+        await client.kick(user)
+        await client.say(("{} was successfully kicked.").format(user))
     except:
-       await ctx.send("WHO THE HELL DO U THINK U ARE;You have invalid premmisions.{} has not been kicked.").format(user))
+        await ctx.send("WHO THE HELL DO U THINK U ARE;You have invalid premmisions.{} has not been kicked.").format(user))
 
 # Unban Command #
 
