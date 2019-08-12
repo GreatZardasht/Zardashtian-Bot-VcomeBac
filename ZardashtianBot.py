@@ -186,7 +186,7 @@ async def ban(ctx, user: discord.User):
     """Ban a user"""
     await client.ban(user)
     await client.send(("{} was successfully banned.").format(user))
-except discord.Forbidden:
+except:
      await ctx.send("WHO THE HELL DO U THINK U ARE;You have invalid premmisions.")
 
 # Kick Command #
@@ -198,7 +198,7 @@ async def kick(ctx, user: discord.User):
     """Kick a user"""
     await client.kick(user)
     await client.send(("{} was successfully kicked.").format(user))
-except discord.Forbidden:
+except:
     await ctx.send("WHO THE HELL DO U THINK U ARE;You have invalid premmisions.{} has not been kicked.").format(user))
 
 # Unban Command #
@@ -211,7 +211,7 @@ async def unban(ctx, userName: discord.User):
     try:
         await client.unban(userName)
         await ctx.send("Successful!")
-    except discord.Forbidden:
+    except:
         await ctx.send("You don't have permissions :thinking:")
 
 # Other important crap #
