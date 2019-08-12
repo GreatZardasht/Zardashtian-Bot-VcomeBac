@@ -184,11 +184,10 @@ async def support(ctx):
 @commands.bot_has_permissions(ban_members=True)
 async def ban(ctx, user: discord.User):
     """Ban a user"""
-    try:
-        await client.ban(user)
-        await client.send(("{} was successfully banned.").format(user))
-    except discord.Forbidden:
-        await ctx.send("WHO THE HELL DO U THINK U ARE;You have invalid premmisions.")
+    await client.ban(user)
+    await client.send(("{} was successfully banned.").format(user))
+except discord.Forbidden:
+     await ctx.send("WHO THE HELL DO U THINK U ARE;You have invalid premmisions.")
 
 # Kick Command #
 
@@ -197,11 +196,10 @@ async def ban(ctx, user: discord.User):
 @commands.bot_has_permissions(administrator=True)
 async def kick(ctx, user: discord.User):
     """Kick a user"""
-    try:
-        await client.kick(user)
-        await client.send(("{} was successfully kicked.").format(user))
-    except discord.Forbidden:
-        await ctx.send("WHO THE HELL DO U THINK U ARE;You have invalid premmisions.{} has not been kicked.").format(user))
+    await client.kick(user)
+    await client.send(("{} was successfully kicked.").format(user))
+except discord.Forbidden:
+    await ctx.send("WHO THE HELL DO U THINK U ARE;You have invalid premmisions.{} has not been kicked.").format(user))
 
 # Unban Command #
 
