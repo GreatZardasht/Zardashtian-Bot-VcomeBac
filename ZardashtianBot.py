@@ -185,10 +185,10 @@ async def support(ctx):
 async def ban(ctx, user: discord.User):
     """Ban a user"""
     try:
-       await client.ban(user)
-       await client.say(("{} was successfully banned.").format(user))
+        await client.ban(user)
+        await client.say(("{} was successfully banned.").format(user))
     except:
-       await ctx.send("WHO THE HELL DO U THINK U ARE;You have invalid premmisions.{} has not been kicked.").format(user))
+        await ctx.send("WHO THE HELL DO U THINK U ARE;You have invalid premmisions.{} has not been kicked.").format(user))
 
 # Kick Command #
 
@@ -211,10 +211,10 @@ async def kick(ctx, user: discord.User):
 async def unban(ctx, userName: discord.User):
     """Unban a user ( Oh Snap Here We Go Again)""" 
     try:
-       await client.unban(userName)
-       await ctx.send("Successful!")
+        await client.unban(userName)
+        await ctx.send("Successful!")
     except:
-       await ctx.send("You don't have permissions :thinking:")
+        await ctx.send("You don't have permissions :thinking:")
 
 # Other important crap #
     
