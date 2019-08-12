@@ -209,7 +209,8 @@ async def unban(ctx, userName: discord.User):
         await ctx.send("Successful!")
 
 # Other important crap #
-    
+
+@client.event
 async def list_servers():
     await client.wait_until_ready()
     while not client.is_closed:
