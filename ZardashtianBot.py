@@ -139,8 +139,11 @@ async def info(ctx):
     # Shows the number of servers the bot is member of. #
     embed.add_field(name="Server count", value=f"{len(client.guilds)}")
 
-    # give users a link to invite thsi bot to their server #
+    # give users a link to invite this bot to their server #
     embed.add_field(name="Invite", value="https://discordapp.com/oauth2/authorize?client_id=464826737189060608&permissions=8&redirect_uri=https%3A%2F%2Fdiscord.gg%2FuYSydfN&scope=bot")
+
+    # Shows the number of servers the bot is member of. #
+    embed.add_field(name="Latest Changelog", value="updated ban and unban and turned everycmd starting to a small letter no caps needed after Z- now")
 
     await ctx.send(embed=embed)
 
