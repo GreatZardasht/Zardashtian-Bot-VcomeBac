@@ -214,7 +214,7 @@ async def unban(ctx, userName: discord.User):
        await client.unban(userName)
        await ctx.send("Successful!")
     except:
-        await ctx.send("You don't have permissions :thinking:")
+       await ctx.send("You don't have permissions :thinking:")
 
 # Other important crap #
     
