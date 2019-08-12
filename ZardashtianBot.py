@@ -91,13 +91,13 @@ async def divide(ctx, left : int, right : int):
 # Ping #
 
 @client.command()
-async def Ping(ctx):
+async def ping(ctx):
 	"""Pangs! :ping_pong:"""
 	await ctx.send("Pong! :ping_pong:")
 
 # Shoot Command #
 
-@client.command(name='Shoot',
+@client.command(name='shoot',
                 description="Shoot an enemy!",
                 brief="Shoot your enemies....",
                 pass_context=True)
@@ -113,7 +113,7 @@ async def Shoot(ctx, context, target: discord.Member):
 
 # Stab Command #
 
-@client.command(name='Stab',
+@client.command(name='stab',
                 description="Stab an enemy!",
                 brief="Stab your enemies....",
                 pass_context=True)
@@ -152,31 +152,7 @@ async def on_ready():
     print('Logged in as')
     print(client.user.name)
     print('Why Is Asyncio Bullying Us')
-
-@client.event   
-async def game_changer():
-	changinggame = True
-	while True:
-		randint = random.randint(1, 3)
-		users = 0
-		for guild in bot.guilds:
-			users = users + guild._member_count
-		users = format(users, ',d')
-		guilds = format(len(bot.guilds), ',d')
-		if randint == 1:
-			await bot.change_presence(status=discord.Status.idle, activity=discord.Game(name=f"{users} users in {guilds} guilds"))
-			await asyncio.sleep(300)
-			return
-		if randint == 2:
-			await bot.change_presence(status=discord.Status.dnd, activity=discord.Game(name="Fire is currently in BETA"))
-			await asyncio.sleep(300)
-			return
-		if randint == 3:
-			me = bot.get_user(414822379475304449)
-			await bot.change_presence(status=discord.Status.idle, activity=discord.Game(name=f"Created by {me}"))
-			await asyncio.sleep(300)
-			return
-
+	
 # # # Owner Only Cmds # # #
 
 # Status Changer Cmd #
@@ -197,37 +173,42 @@ async def statusc(self,ctx,*args):
 # Support Us #
 
 @client.command()
-async def Support(ctx):
+async def support(ctx):
          """Support us for better things"""
          await ctx.send("Join Us Here chat with our friendly staff https://discord.gg/uYSydfN")
-
-# Kick Command #
-
-@client.command(pass_context = True)
-async def Kick(ctx, userName: discord.User):
-    """Kick a user""" 
-    try:
-       await client.kick(userName)
-       await ctx.send("Successful!")
-    except:
-       await ctx.send("You don't have permissions :thinking:")
 
 # Ban Command #
 
 @client.command(pass_context = True)
-async def Ban(ctx, userName: discord.User):
-    """Ban a user""" 
+@commands.has_permissions(ban_members=True)
+@commands.bot_has_permissions(ban_members=True)
+async def ban(ctx, user: discord.User):
+    """Ban a user"""
     try:
-       await client.ban(userName)
-       await ctx.send("Successful!")
+       await client.ban(user)
+       await client.say(("{} was successfully banned.").format(user))
     except:
-       await ctx.send("You don't have permissions :thinking:")
-   
+       await ctx.send("WHO THE HELL DO U THINK U ARE;You have invalid premmisions.{} has not been kicked.").format(user))
+
+# Kick Command #
+
+@client.command(pass_context = True)
+@commands.has_permissions(administrator=True)
+@commands.bot_has_permissions(administrator=True)
+async def kick(ctx, user: discord.User):
+    """Kick a user"""
+    try:
+       await client.kick(user)
+       await client.say(("{} was successfully kicked.").format(user))
+    except:
+       await ctx.send("WHO THE HELL DO U THINK U ARE;You have invalid premmisions.{} has not been kicked.").format(user))
 
 # Unban Command #
 
 @client.command(pass_context = True)
-async def Unban(ctx, userName: discord.User):
+@commands.has_permissions(administrator=True)
+@commands.bot_has_permissions(administrator=True)
+async def unban(ctx, userName: discord.User):
     """Unban a user ( Oh Snap Here We Go Again)""" 
     try:
        await client.unban(userName)
