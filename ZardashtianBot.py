@@ -101,7 +101,7 @@ async def ping(ctx):
                 description="Shoot an enemy!",
                 brief="Shoot your enemies....",
                 pass_context=True)
-async def Shoot(ctx, context, target: discord.Member):
+async def shoot(ctx, context, target: discord.Member):
     possible_responses = [
         'You missed your shot!',
         'Uh oh! The fuzz have arrived!',
@@ -117,7 +117,7 @@ async def Shoot(ctx, context, target: discord.Member):
                 description="Stab an enemy!",
                 brief="Stab your enemies....",
                 pass_context=True)
-async def Shoot(ctx, context, target: discord.Member):
+async def stab(ctx, context, target: discord.Member):
     possible_responses = [
         'You spill their guts!',
         'Oh no, the Po-Po!',
@@ -186,9 +186,9 @@ async def ban(ctx, user: discord.User):
     """Ban a user"""
     try:
         await client.ban(user)
-        await client.say(("{} was successfully banned.").format(user))
+        await client.send(("{} was successfully banned.").format(user))
     except discord.Forbidden:
-        await ctx.send("WHO THE HELL DO U THINK U ARE;You have invalid premmisions.{} has not been kicked.").format(user))
+        await ctx.send("WHO THE HELL DO U THINK U ARE;You have invalid premmisions.")
 
 # Kick Command #
 
@@ -199,7 +199,7 @@ async def kick(ctx, user: discord.User):
     """Kick a user"""
     try:
         await client.kick(user)
-        await client.say(("{} was successfully kicked.").format(user))
+        await client.send(("{} was successfully kicked.").format(user))
     except discord.Forbidden:
         await ctx.send("WHO THE HELL DO U THINK U ARE;You have invalid premmisions.{} has not been kicked.").format(user))
 
