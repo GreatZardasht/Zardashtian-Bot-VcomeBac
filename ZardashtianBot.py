@@ -156,8 +156,8 @@ async def on_ready():
     print(client.user.name)
     print('Why Is Asyncio Bullying Us')
     print('Servers connected to:')
-    for server in client.guild:
-      print(guild.name)
+    for server in client.guilds:
+      print(guilds.name)
 	
 # # # Owner Only Cmds # # #
 
