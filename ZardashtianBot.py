@@ -209,9 +209,8 @@ async def kick(ctx, user: discord.User):
 @commands.has_permissions(administrator=True)
 @commands.bot_has_permissions(administrator=True)
 async def unban(ctx, userName: discord.User):
-    """Unban a user ( Oh Snap Here We Go Again)""" 
-    try:
-        await client.unban(userName)
-        await ctx.send("Successful!")
+    """Unban a user ( Oh Snap Here We Go Again)"""
+    await client.unban(userName)
+    await ctx.send("Successful!")
 
 client.run(BOT_TOKEN)
