@@ -156,8 +156,9 @@ async def on_ready():
     print(client.user.name)
     print('Why Is Asyncio Bullying Us')
     print('Servers connected to:')
-    for server in client.guilds:
-      print(guilds.name)
+        for server in client.servers:
+            print(server.name)
+        await asyncio.sleep(600)
 	
 # # # Owner Only Cmds # # #
 
