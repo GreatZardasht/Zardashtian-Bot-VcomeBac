@@ -40,6 +40,12 @@ client = commands.Bot(command_prefix='Z-')
 
 #	#	# Fun! #	#	#
 
+# Creeper CMD #
+
+@client.command()
+async def creeper(ctx):
+    await ctx.send('aww man')
+
 # 8ball #
 
 @client.command(name='8ball',
@@ -92,8 +98,11 @@ async def divide(ctx, left : int, right : int):
 
 @client.command()
 async def ping(ctx):
-	"""Pangs! :ping_pong:"""
-	await ctx.send("Pong! :ping_pong:")
+    """Pings the bot."""
+    embed = discord.Embed(colour=0x00FF00)
+    embed.add_field(name="Ping", value=f'🏓 {round(bot.latency * 1000 / 2)}ms')
+    embed.set_footer(text=f"Request by {ctx.author}", icon_url=ctx.author.avatar_url)
+    await ctx.send(embed=embed)
 
 # Shoot Command #
 
@@ -193,23 +202,37 @@ async def support(ctx):
 
 # Ban Command #
 
-@client.command(pass_context = True)
+@client.command()
 @commands.has_permissions(ban_members=True)
 @commands.bot_has_permissions(ban_members=True)
-async def ban(ctx, user: discord.User):
-    """Ban a user"""
-    await client.ban(user)
-    await client.send(("{} was successfully banned.").format(user))
+async def ban(ctx, member: discord.Member, *, reason='No reason provided.'):
+    """Bans specified user"""
+    dm = discord.Embed(title="You have been banned from a certain guild!", color=0xFF0000)
+    dm.add_field(name="Moderator:",
+                    value=ctx.message.author.display_name)
+    dm.add_field(name="Reason:", value=f"{reason}")
+    dm.set_thumbnail(url=member.avatar_url)
+    await member.send(embed=dm)  # Send DM
+    await member.ban(reason=reason)  # Ban
+    await ctx.message.delete()  # Delete The Message
+    await ctx.send('member has been banned.')
 
 # Kick Command #
 
-@client.command(pass_context = True)
-@commands.has_permissions(administrator=True)
-@commands.bot_has_permissions(administrator=True)
-async def kick(ctx, user: discord.User):
-    """Kick a user"""
-    await client.kick(user)
-    await client.send(("{} was successfully kicked.").format(user))
+@client.command()
+@commands.has_permissions(ban_members=True)
+@commands.bot_has_permissions(ban_members=True)
+async def kick(ctx, member: discord.Member, *, reason='No reason provided.'):
+    """Kicks specified user"""
+    dm = discord.Embed(title="You have been kicked from a certain guild!", color=0xFF0000)
+    dm.set_thumbnail(url=member.avatar_url)
+    dm.add_field(name="Reason:", value=f"{reason}")
+    dm.add_field(name="Moderator:",
+                    value=ctx.message.author.display_name)
+    await member.send(embed=dm)  # Send DM
+    await member.kick(reason=reason)  # Kick
+    await ctx.message.delete()  # Delete The Message
+    await ctx.send('member has been kicked.')
 
 # Unban Command #
 
