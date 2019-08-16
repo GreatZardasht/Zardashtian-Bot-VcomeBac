@@ -6,6 +6,8 @@ import asyncio
 import logging
 from discord.ext import commands, tasks
 from itertools import cycle
+from discord.ext.commands import when_mentioned_or
+from discord.utils import get
 import platform
 import time
 import datetime
