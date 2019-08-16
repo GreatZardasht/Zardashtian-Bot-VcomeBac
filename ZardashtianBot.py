@@ -180,17 +180,6 @@ async def statusc(self,ctx,*args):
         act = discord.Activity(name=" ".join(args),type=acttype)
         await self.bot.change_presence(activity=act)
 
-# List Guilds #
-
-@client.command()
-@commands.is_owner()
-async def servers(ctx):
-    'Lists the servers the bot is in, only usable by the owner in DMs'
-    guilds = ''
-    for guild in bot.guilds:
-        guilds += guild.name + '\n'
-    await ctx.send(guilds)
-
 # # # Moderation # # #
 
 # Support Us #
