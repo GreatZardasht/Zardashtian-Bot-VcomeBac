@@ -5,3 +5,7 @@ wolframalpha
 cleverwrap
 flask
 humanize
+aiohttp
+websockets
+chardet
+asyncio
