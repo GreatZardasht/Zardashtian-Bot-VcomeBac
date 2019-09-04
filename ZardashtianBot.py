@@ -41,14 +41,18 @@ client = commands.Bot(command_prefix='Z-')
 
 # Variables #
 
-status = cycle (['With The FBI', 'ZardashtianBot│Z-help │ Code: Vcomeback edition', 'Sub to Zardasht HQ',
-                 'do Z-info!!!'])
-
-@tasks.loop (seconds=10)
-async def change_status() :
-    await client.change_presence (activity=discord.Game (next (status)))
-
 #	#	# Fun! #	#	#
+
+# Avatar #
+
+@client.command(name='avatar', hidden = True)
+async def avatar(self, ctx,other:discord.Member=None):
+    """avatar"""
+    if other is None:
+        other=ctx.message.author
+    pic=discord.Embed()
+    pic.set_image(url=other.avatar_url)
+    await ctx.send(embed=pic)
 
 # Creeper CMD #
 
