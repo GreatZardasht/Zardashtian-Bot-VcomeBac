@@ -165,6 +165,8 @@ async def info(ctx):
 
 @client.event
 async def on_ready():
+    await client.change_presence (activity=discord.Game ('ZardashtianBot│ Z-help │ Code: Vcomeback edition'), status=discord.Status.online)
+    change_status.start ( )
     print('The bot is ready!')
     print('Logged in as')
     print(client.user.name)
