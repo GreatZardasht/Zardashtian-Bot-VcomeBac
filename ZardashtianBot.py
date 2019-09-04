@@ -166,7 +166,7 @@ async def on_ready():
     print('Logged in as')
     print(client.user.name)
     print('Why Is Asyncio Bullying Us')
-    await bot.change_presence(game=discord.Game(name='ZardashtianBot│ Z-help │ Code: Vcomeback Edition'))
+    await client.change_presence(game=discord.Game(name='ZardashtianBot│ Z-help │ Code: Vcomeback Edition'))
     	
 # # # Owner Only Cmds # # #
 
