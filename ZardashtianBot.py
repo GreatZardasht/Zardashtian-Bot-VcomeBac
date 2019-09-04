@@ -43,17 +43,6 @@ client = commands.Bot(command_prefix='Z-')
 
 #	#	# Fun! #	#	#
 
-# Avatar #
-
-@client.command(name='avatar', hidden = True)
-async def avatar(self, ctx,other:discord.Member=None):
-    """avatar"""
-    if other is None:
-        other=ctx.message.author
-    pic=discord.Embed()
-    pic.set_image(url=other.avatar_url)
-    await ctx.send(embed=pic)
-
 # Creeper CMD #
 
 @client.command()
