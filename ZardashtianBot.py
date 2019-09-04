@@ -41,7 +41,12 @@ client = commands.Bot(command_prefix='Z-')
 
 # Variables #
 
+status = cycle (['With The FBI', 'ZardashtianBot│Z-help │ Code: Vcomeback edition', 'Sub to Zardasht HQ',
+                 'do Z-info!!!'])
 
+@tasks.loop (seconds=10)
+async def change_status() :
+    await client.change_presence (activity=discord.Game (next (status)))
 
 #	#	# Fun! #	#	#
 
