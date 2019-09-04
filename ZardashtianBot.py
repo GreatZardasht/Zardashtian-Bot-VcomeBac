@@ -43,6 +43,53 @@ client = commands.Bot(command_prefix='Z-')
 
 #	#	# Fun! #	#	#
 
+# Beta CMDS #
+
+@client.event
+async def on_message(message):
+    if message.content.startswith('!bitcoin'):
+      price = requests.get('https://api.coindesk.com/v1/bpi/currentprice.json').json()['bpi']['USD']['rate']
+      await client.send_message(message.channel, "Bitcoin is $" + price)
+      await client.send_message(message.channel, "HODL HODL")
+    if "repl.it" in message.content:
+      await client.send_message(message.channel, slogan[randint(0,len(slogan) - 1)])
+    if message.content.startswith('!dadjoke'):
+      joke = requests.get('https://icanhazdadjoke.com', headers={"Accept": "text/plain"}).text
+      await client.send_message(message.channel, joke)
+    if message.content.startswith('!random'):
+      await client.send_message(message.channel, 'You rolled a ' + str(randint(1,6)))
+    if message.content.startswith('!xkcd'):
+      await client.send_message(message.channel, 'get ready to laugh... or something')
+      latest = requests.get('https://xkcd.com/info.0.json').json()
+      num = randint(1, latest['num'])
+      comic = requests.get('https://xkcd.com/' + str(num) + '/info.0.json').json()
+      await client.send_message(message.channel, comic['img'])
+      await client.send_message(message.channel, '_' + comic['alt'] + '_')
+      
+    if message.content.startswith('!quote'):
+      await client.send_message(message.channel, 'thinking...')
+      r = requests.get('https://talaikis.com/api/quotes/random/')
+      q = r.json()
+      await client.send_message(message.channel, q['quote'] + ' -- ' + q['author'])
+      
+    if message.content.startswith('!gif '):
+      await client.send_message(message.channel, 'researching')
+      tag = message.content[5:]
+      r = requests.get('http://api.giphy.com/v1/gifs/search?q=' + tag + '&api_key=hCKgiae5XgjiYbKPTdgrSuh8P7l2xWMT')
+      q = r.json()
+      await client.send_message(message.channel, q['data'][0]['url'])
+    if message.content.startswith('!test'):
+        counter = 0
+        tmp = await client.send_message(message.channel, 'Calculating messages...')
+        async for log in client.logs_from(message.channel, limit=100):
+            if log.author == message.author:
+                counter += 1
+
+        await client.edit_message(tmp, 'You have {} messages.'.format(counter))
+    elif message.content.startswith('!sleep'):
+        await asyncio.sleep(5)
+        await client.send_message(message.channel, 'Done sleeping')
+
 # Creeper CMD #
 
 @client.command()
